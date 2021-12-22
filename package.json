@@ -1,0 +1,23 @@
+{
+  "name": "voicechatnotifier",
+  "version": "1.0.0",
+  "description": "Discord Bot to notify users that a user has entered a voice chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thanh-cnguyen/VoiceChatNotifier.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thanh-cnguyen/VoiceChatNotifier/issues"
+  },
+  "homepage": "https://github.com/thanh-cnguyen/VoiceChatNotifier#readme",
+  "dependencies": {
+    "discord.js": "^13.3.1"
+  }
+}
