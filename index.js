@@ -1,10 +1,21 @@
-const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
-const config = require('./config.json');
-const TOKEN = config.token;
-
-client.on('ready', () => {
-    console.log('VCN bot is in!!!');
+const { Client, Intents, Collection } = require('discord.js');
+const bot = new Client({
+    intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_VOICE_STATES,
+        Intents.FLAGS.GUILD_PRESENCES
+    ]
 });
 
-client.login(TOKEN);
+require('dotenv').config(); // Initialize configuration
+
+bot.commands = new Collection(); // Create Command Collection
+bot.events = new Collection();  // Create Event Collection
+
+['command_handler', 'event_handler'].forEach(handlers => { // Loop to find handlers
+    require(`./handlers/${handlers}`)(bot, Client);
+});
+
+bot.login(process.env.DISCORD_TOKEN).catch(err => console.log(`Invalid Token Provided!`)); // Log the bot into Discord
